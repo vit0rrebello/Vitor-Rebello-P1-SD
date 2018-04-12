@@ -1,0 +1,28 @@
+package Veterinario;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+
+import comum.IServicoRemoto;
+
+public class AppPrincipal {
+	public static void main (String[] args) {
+		try {
+			IServicoRemoto objPessoa = (IServicoRemoto) Naming.lookup("rmi://localhost:8282/pessoa");
+			
+			Veterinario v1 = new Veterinario();
+			
+			v1.setId(1);
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch(RemoteException e){
+			e.printStackTrace();
+		} catch (NotBoundException e){
+			e.printStackTrace();
+		}
+	}
+
+}
